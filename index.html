@@ -1,1 +1,55 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Cobalt Projects</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+  <style>
+    html {
+      scroll-behavior: smooth;
+    }
+  </style>
+</head>
+<body class="bg-gray-900 text-white font-sans">
 
+  <header class="bg-gray-950 shadow-md">
+    <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+      <h1 class="text-2xl font-bold text-white">Cobalt_Projects</h1>
+      <nav class="space-x-6">
+        <a href="index.html" class="hover:text-gray-300">Главная</a>
+        <a href="about.html" class="hover:text-gray-300">Новости</a>
+        <a href="help.html" class="hover:text-gray-300">Поддержка</a>
+        <a href="libraly.html" class="hover:text-gray-300">Библиотека</a>
+        <a href="wiki.html" class="hover:text-gray-300">Вики</a>
+        <a href="launcher.html" class="hover:text-gray-300">Лаунчер</a>
+        <a href="settigs.html" class="hover:text-gray-300">Настройки</a>
+      </nav>
+    </div>
+  </header>
+
+  <section
+  class="text-center py-24 px-4 bg-cover bg-center"
+  style="background-image: url('images/pattern.png');"
+  data-aos="fade-up"
+  >
+  <div>
+    <h2 class="text-4xl sm:text-5xl font-bold mb-6 text-white">Добро пожаловать!</h2>
+  </div>
+</section>
+
+  <footer class="bg-gray-950 py-10 text-center text-gray-400 text-sm">
+    © 2025 Atlantis Studio. Все права защищены.
+  </footer>
+
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+  <script>
+    AOS.init({
+      duration: 1000,     
+      once: true,        
+      offset: 100       
+    });
+  </script>
+</body>
+</html>
