@@ -1,1 +1,80 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>О студии</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+  <style>
+    html {
+      scroll-behavior: smooth;
+    }
+  </style>
+</head>
+<body class="bg-gray-900 text-white font-sans">
 
+  <header class="bg-gray-950 shadow-md">
+    <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+      <h1 class="text-2xl font-bold text-white">🌊 Atlantis Studio</h1>
+      <nav class="space-x-6">
+       <a href="index.html" class="hover:text-gray-300">Главная</a> 
+        <a href="projects.html" class="hover:text-gray-300">Проекты</a>
+        <a href="contats.html" class="hover:text-gray-300">Контакты</a>
+        <a href="about.html" class="hover:text-gray-300">О нас</a>
+        <a href="settigs.html" class="hover:text-gray-300">Настройки</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="text-center py-24 px-4 bg-gradient-to-b from-gray-900 to-gray-800" data-aos="fade-up">
+    <h2 class="text-4xl sm:text-5xl font-bold mb-6">Мы создаем будущее</h2>
+    <p class="text-lg sm:text-xl text-gray-300 max-w-2xl mx-auto">
+     Наша студия специализируется на разработке современных мобильных и ПК-игр.
+    </p>
+  </section>
+
+  <section class="max-w-6xl mx-auto px-6 py-20 grid md:grid-cols-2 gap-12 items-center">
+    <div data-aos="fade-right">
+      <h3 class="text-3xl font-semibold mb-4">Про нас</h3>
+      <p class="text-gray-300 text-lg leading-relaxed">
+      Atlantis Studio – это команда разработчиков, дизайнеров и энтузиастов, объединенных пристрастием к технологиям и играм. С 2022 г. мы создаем инновационные проекты с упором на реализм, интерактивность и уникальный визуальный стиль. Также вы можете увидеть на скриншоте в правой части один из наших проектов под названием Car Racing Simulator – CRS. Игра все еще находится в разработке, так что не обращайте внимания на плохое качество игры.
+      </p>
+    </div>
+    <img src="photo_2025-05-18_20-58-20.jpg" alt="О студии" class="rounded-2xl shadow-lg" data-aos="fade-left">
+  </section>
+
+  <section class="bg-gray-800 py-20">
+    <div class="max-w-6xl mx-auto px-6 text-center">
+      <h3 class="text-3xl font-bold mb-12" data-aos="zoom-in">Наши ценности</h3>
+      <div class="grid md:grid-cols-3 gap-10">
+        <div class="p-6 bg-gray-900 rounded-xl shadow-md" data-aos="fade-up" data-aos-delay="100">
+          <h4 class="text-xl font-semibold mb-3">Инновации</h4>
+          <p class="text-gray-400">Мы всегда на шаг впереди, внедряя передовые технологии в каждый проект.</p>
+        </div>
+        <div class="p-6 bg-gray-900 rounded-xl shadow-md" data-aos="fade-up" data-aos-delay="200">
+          <h4 class="text-xl font-semibold mb-3">Качество</h4>
+          <p class="text-gray-400">Каждая деталь имеет значение — мы стремимся к совершенству в дизайне и коде.</p>
+        </div>
+        <div class="p-6 bg-gray-900 rounded-xl shadow-md" data-aos="fade-up" data-aos-delay="300">
+          <h4 class="text-xl font-semibold mb-3">Команда</h4>
+          <p class="text-gray-400">Мы верим, что сильная команда – залог большого продукта.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="bg-gray-950 py-10 text-center text-gray-400 text-sm">
+    © 2025 Atlantis Studio. Все права защищены.
+  </footer>
+
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+  <script>
+    AOS.init({
+      duration: 1000,     // Длительность анимации
+      once: true,         // Анимация один раз при появлении
+      offset: 100         // Смещение перед запуском
+    });
+  </script>
+</body>
+</html>
