@@ -20,7 +20,6 @@
     .scrolled {
       box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
     }
-    /* Анимация бургер-меню */
     .burger-line {
       display: block;
       height: 2px;
@@ -29,7 +28,6 @@
       margin: 5px auto;
       transition: all 0.3s ease;
     }
-    /* Стили для открытого меню */
     .mobile-menu {
       max-height: 0;
       overflow: hidden;
@@ -48,7 +46,6 @@
         <h1 class="text-2xl font-bold text-white">🌊 Atlantis Studio</h1>
       </div>
       
-      <!-- Десктопное меню (скрыто на мобильных) -->
       <nav class="hidden md:flex space-x-6">
         <a href="index.html" class="hover:text-gray-300">Главная</a> 
         <a href="projects.html" class="hover:text-gray-300">Проекты</a>
@@ -57,7 +54,6 @@
         <a href="settigs.html" class="hover:text-gray-300">Настройки</a>
       </nav>
       
-      <!-- Кнопка бургера (только на мобильных) -->
       <button id="burgerBtn" class="md:hidden text-white focus:outline-none">
         <div class="burger-line"></div>
         <div class="burger-line"></div>
@@ -126,7 +122,6 @@
       offset: 100
     });
 
-    // Эффект тени при прокрутке
     window.addEventListener('scroll', function() {
       const header = document.querySelector('header');
       if (window.scrollY > 10) {
@@ -143,7 +138,6 @@
     burgerBtn.addEventListener('click', function() {
       mobileMenu.classList.toggle('open');
       
-      // Анимация иконки бургера
       const lines = document.querySelectorAll('.burger-line');
       if (mobileMenu.classList.contains('open')) {
         lines[0].style.transform = 'translateY(7px) rotate(45deg)';
@@ -156,7 +150,6 @@
       }
     });
     
-    // Закрытие меню при клике на пункт
     const menuItems = mobileMenu.querySelectorAll('a');
     menuItems.forEach(item => {
       item.addEventListener('click', () => {
