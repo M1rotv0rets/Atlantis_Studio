@@ -1,1 +1,129 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Atlantis Studio</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    html {
+      scroll-behavior: smooth;
+    }
+    .sticky-header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      transition: box-shadow 0.3s ease;
+    }
+    .scrolled {
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+    }
+    .burger-line {
+      display: block;
+      height: 2px;
+      width: 25px;
+      background: white;
+      margin: 5px auto;
+      transition: all 0.3s ease;
+    }
+    .mobile-menu {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.5s ease-out;
+    }
+    .mobile-menu.open {
+      max-height: 300px;
+    }
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    .fade-in-up {
+      animation: fadeInUp 1s ease-out forwards;
+    }
+    .fade-delay-1 {
+      animation-delay: 0.2s;
+    }
+    .fade-delay-2 {
+      animation-delay: 0.4s;
+    }
+    .fade-delay-3 {
+      animation-delay: 0.6s;
+    }
+  </style>
+</head>
+<body class="bg-gray-900 text-white font-sans">
 
+  <header class="bg-gray-950 shadow-md sticky-header">
+    <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+      <div class="flex items-center">
+        <h1 class="text-2xl font-bold text-white">🌊 Atlantis Studio</h1>
+      </div>
+      
+      <nav class="hidden md:flex space-x-6">
+        <a href="index.html" class="hover:text-gray-300">Главная</a> 
+        <a href="projects.html" class="hover:text-gray-300">Проекты</a>
+        <a href="contats.html" class="hover:text-gray-300">Контакты</a>
+        <a href="about.html" class="hover:text-gray-300">О нас</a>
+        <a href="settigs.html" class="hover:text-gray-300">Настройки</a>
+      </nav>
+      
+      <button id="burgerBtn" class="md:hidden text-white focus:outline-none">
+        <div class="burger-line"></div>
+        <div class="burger-line"></div>
+        <div class="burger-line"></div>
+      </button>
+    </div>
+    
+    <div id="mobileMenu" class="mobile-menu bg-gray-950 md:hidden">
+      <div class="flex flex-col px-6 pb-4">
+        <a href="index.html" class="py-2 hover:text-gray-300 border-b border-gray-800">Главная</a> 
+        <a href="projects.html" class="py-2 hover:text-gray-300 border-b border-gray-800">Проекты</a>
+        <a href="contats.html" class="py-2 hover:text-gray-300 border-b border-gray-800">Контакты</a>
+        <a href="about.html" class="py-2 hover:text-gray-300 border-b border-gray-800">О нас</a>
+        <a href="settigs.html" class="py-2 hover:text-gray-300">Настройки</a>
+      </div>
+    </div>
+  </header>
+
+  <section class="text-center py-24 px-4 bg-gradient-to-b from-gray-900 to-gray-800" data-aos="fade-up">
+    <h2 class="text-4xl sm:text-5xl font-bold mb-6">Мы создаем будущее</h2>
+    <p class="text-lg sm:text-xl text-gray-300 max-w-2xl mx-auto">
+     Наша студия разрабатывает современные мобильные и ПК-игры.
+    </p>
+  </section>
+
+  <!-- Projects Section -->
+  <section class="py-16 px-6 md:px-20 bg-gray-900">
+    <h2 class="text-3xl font-bold text-center mb-12" data-aos="fade-up">Наши проекты</h2>
+    <div class="grid gap-10 md:grid-cols-2 lg:grid-cols-3">
+      <!-- Project Card 1 -->
+      <div class="bg-gray-800 rounded-2xl overflow-hidden shadow-lg hover:shadow-pink-500/30 transition hover:-translate-y-1" 
+           data-aos="fade-up" data-aos-delay="100">
+        <img src="photo_2025-05-18_22-32-58.jpg" alt="Car Racing Simulator" class="w-full h-48 object-cover">
+        <div class="p-6">
+          <h3 class="text-xl font-semibold mb-2">Car Racing Simulator</h3>
+          <p class="text-gray-400">Мобильный симулятор вождения различных автомобилей с реалистичной физикой и рабочим экраном-интерфейсом внутри автомобилей.</p>
+        </div>
+      </div>
+      
+      <!-- Project Card 2 -->
+      <div class="bg-gray-800 rounded-2xl overflow-hidden shadow-lg hover:shadow-pink-500/30 transition hover:-translate-y-1" 
+           data-aos="fade-up" data-aos-delay="200">
+        <img src="photo_2025-05-18_22-29-17.jpg" alt="Cobalt Launcher" class="w-full h-48 object-cover">
+        <div class="p-6">
+          <h3 class="text-xl font-semibold mb-2">Cobalt Launcher</h3>
+          <p class="text-gray-400">Лаунчер для Minecraft, разработка все еще продолжается.</p>
+        </div>
+      </div>
+      
+      <!-- Project Card 3 -->
+      <div class="bg-gray-800 rounded-2xl overflow-hidden shadow-lg hover:shadow-pink-500/30 transition hover:-translate-y-1"
