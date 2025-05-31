@@ -59,6 +59,7 @@
       transform: translateY(0);
     }
     
+    /* Новые стили для выравнивания кнопок */
     .card-content {
       display: flex;
       flex-direction: column;
@@ -68,6 +69,7 @@
       flex-grow: 1;
     }
     
+    /* Стили для выпадающего меню настроек */
     .settings-dropdown {
       position: absolute;
       top: 100%;
@@ -102,6 +104,7 @@
       text-align: center;
     }
     
+    /* Мобильное меню настроек */
     .mobile-settings-submenu {
       max-height: 0;
       overflow: hidden;
@@ -126,11 +129,13 @@
         <a href="contats.html" class="hover:text-gray-300">Контакты</a>
         <a href="about.html" class="hover:text-gray-300">О нас</a>
         
+        <!-- Кнопка настроек для десктопа -->
         <div class="relative">
           <button id="settingsBtn" class="hover:text-gray-300 flex items-center">
             Настройки <i class="fas fa-cog ml-2"></i>
           </button>
           
+          <!-- Выпадающее меню настроек -->
           <div id="settingsDropdown" class="settings-dropdown">
             <a href="#"><i class="fas fa-sign-in-alt"></i> Войти</a>
             <a href="#"><i class="fas fa-moon"></i> Сменить тему</a>
@@ -153,12 +158,14 @@
         <a href="contats.html" class="py-2 hover:text-gray-300 border-b border-gray-800">Контакты</a>
         <a href="about.html" class="py-2 hover:text-gray-300 border-b border-gray-800">О нас</a>
         
+        <!-- Триггер для мобильного меню настроек -->
         <div class="py-2 border-b border-gray-800">
           <button id="mobileSettingsBtn" class="w-full text-left hover:text-gray-300 flex justify-between items-center">
             <span>Настройки</span>
             <i class="fas fa-chevron-down text-xs"></i>
           </button>
           
+          <!-- Подменю настроек для мобильной версии -->
           <div id="mobileSettingsMenu" class="mobile-settings-submenu bg-gray-900 rounded-lg mt-1">
             <a href="#" class="block py-2 pl-4 hover:text-gray-300"><i class="fas fa-sign-in-alt mr-2"></i>Войти</a>
             <a href="#" class="block py-2 pl-4 hover:text-gray-300"><i class="fas fa-moon mr-2"></i>Сменить тему</a>
@@ -315,6 +322,9 @@
       });
     });
     
+    // Новый код для меню настроек
+    
+    // Для десктопной версии
     const settingsBtn = document.getElementById('settingsBtn');
     const settingsDropdown = document.getElementById('settingsDropdown');
     
@@ -323,12 +333,14 @@
       settingsDropdown.classList.toggle('open');
     });
     
+    // Закрытие меню при клике вне его
     document.addEventListener('click', function(e) {
       if (!settingsDropdown.contains(e.target) {
         settingsDropdown.classList.remove('open');
       }
     });
     
+    // Для мобильной версии
     const mobileSettingsBtn = document.getElementById('mobileSettingsBtn');
     const mobileSettingsMenu = document.getElementById('mobileSettingsMenu');
     
@@ -336,6 +348,7 @@
       e.stopPropagation();
       mobileSettingsMenu.classList.toggle('open');
       
+      // Обновление иконки стрелки
       const icon = mobileSettingsBtn.querySelector('i');
       if (mobileSettingsMenu.classList.contains('open')) {
         icon.classList.remove('fa-chevron-down');
@@ -346,12 +359,14 @@
       }
     });
     
+    // Предотвращение закрытия мобильного меню при клике на подменю
     mobileSettingsMenu.addEventListener('click', function(e) {
       e.stopPropagation();
     });
     
+    // Закрытие подменю при клике вне его в мобильной версии
     document.addEventListener('click', function(e) {
-      if (!mobileSettingsMenu.contains(e.target)) {
+      if (!mobileSettingsMenu.contains(e.target) {
         mobileSettingsMenu.classList.remove('open');
         const icon = mobileSettingsBtn.querySelector('i');
         icon.classList.remove('fa-chevron-up');
@@ -360,4 +375,4 @@
     });
   </script>
 </body>
-          </html>
+  </html>
