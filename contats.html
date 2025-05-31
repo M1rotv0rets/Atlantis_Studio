@@ -59,32 +59,43 @@
       transform: translateY(0);
     }
     
-    /* Стили для новых кнопок */
+    /* Стили для кнопок */
     .discord-btn {
-      background-color: #e91e63; /* Розовый цвет */
+      background-color: #e91e63;
       color: white;
       transition: all 0.3s ease;
     }
     .discord-btn:hover {
-      background-color: #d81b60; /* Темно-розовый при наведении */
+      background-color: #d81b60;
       transform: translateY(-2px);
     }
     .telegram-btn {
-      background-color: #29b6f6; /* Голубой цвет */
+      background-color: #29b6f6;
       color: white;
       transition: all 0.3s ease;
     }
     .telegram-btn:hover {
-      background-color: #039be5; /* Темно-голубой при наведении */
+      background-color: #039be5;
+      transform: translateY(-2px);
+    }
+    .github-btn {
+      background-color: #333;
+      color: white;
+      transition: all 0.3s ease;
+    }
+    .github-btn:hover {
+      background-color: #24292e;
       transform: translateY(-2px);
     }
     .btn-container {
       display: flex;
       gap: 12px;
       margin-top: 20px;
+      flex-wrap: wrap;
     }
     .btn-container a {
       flex: 1;
+      min-width: 120px;
       text-align: center;
       padding: 10px 12px;
       border-radius: 8px;
@@ -93,6 +104,12 @@
     }
     .btn-container a i {
       margin-right: 6px;
+    }
+    
+    @media (max-width: 640px) {
+      .btn-container {
+        flex-direction: column;
+      }
     }
   </style>
 </head>
@@ -147,7 +164,6 @@
           <h3 class="text-xl font-semibold mb-2">Car Racing Simulator</h3>
           <p class="text-gray-400">Мобильный симулятор вождения разных автомобилей с реалистичной физикой и рабочим экраном-интерфейсом внутри автомобилей.</p>
           
-          <!-- Кнопки Discord и Telegram -->
           <div class="btn-container">
             <a href="https://discord.gg/3aEfP79muc" class="discord-btn">
               <i class="fab fa-discord"></i> Discord
@@ -159,7 +175,7 @@
         </div>
       </div>
       
-      <!-- НОВАЯ КАРТОЧКА: Наше сообщество -->
+      <!-- Карточка сообщества -->
       <div class="bg-gray-900 rounded-2xl overflow-hidden shadow-lg hover:shadow-pink-500/30 transition hover:-translate-y-1"
            data-aos="fade-up" data-aos-delay="150" data-aos-duration="600">
         <img src="https://images.unsplash.com/photo-1587560699334-bea93391dcef?q=80&w=1000" alt="Community" 
@@ -168,7 +184,6 @@
           <h3 class="text-xl font-semibold mb-2">Наше сообщество</h3>
           <p class="text-gray-400">Присоединяйтесь к нашему сообществу, чтобы первыми узнавать о новостях, обновлениях и эксклюзивных возможностях!</p>
           
-          <!-- Кнопки Discord и Telegram -->
           <div class="btn-container">
             <a href="https://discord.gg/3aEfP79muc" class="discord-btn">
               <i class="fab fa-discord"></i> Discord
@@ -180,7 +195,7 @@
         </div>
       </div>
       
-      <!-- Карточка 2: Cobalt Launcher -->
+      <!-- Карточка 2: Cobalt Launcher (с GitHub) -->
       <div class="bg-gray-900 rounded-2xl overflow-hidden shadow-lg hover:shadow-pink-500/30 transition hover:-translate-y-1"
            data-aos="fade-up" data-aos-delay="200" data-aos-duration="600">
         <img src="https://images.unsplash.com/photo-1550745165-9bc0b252726f?q=80&w=1000" alt="Project 2" 
@@ -189,7 +204,6 @@
           <h3 class="text-xl font-semibold mb-2">Cobalt Launcher</h3>
           <p class="text-gray-400">Свободный альтернативный и бесплатный лаунчер майнкрафт с огромным количеством инструментов и множество возможностей.</p>
           
-          <!-- Кнопки Discord и Telegram -->
           <div class="btn-container">
             <a href="https://discord.gg/3aEfP79muc" class="discord-btn">
               <i class="fab fa-discord"></i> Discord
@@ -197,11 +211,14 @@
             <a href="https://t.me/atlantis_studio_chat" class="telegram-btn">
               <i class="fab fa-telegram-plane"></i> Telegram
             </a>
+            <a href="https://github.com/atlantis-studio/cobalt-launcher" class="github-btn">
+              <i class="fab fa-github"></i> GitHub
+            </a>
           </div>
         </div>
       </div>
       
-      <!-- Карточка 3: Скоро... -->
+      <!-- Карточка 3: Скоро... (с GitHub) -->
       <div class="bg-gray-900 rounded-2xl overflow-hidden shadow-lg hover:shadow-pink-500/30 transition hover:-translate-y-1"
            data-aos="fade-left" data-aos-delay="300" data-aos-duration="600">
         <img src="https://images.unsplash.com/photo-1550745165-9bc0b252726f?q=80&w=1000" alt="Projects 3" 
@@ -210,13 +227,15 @@
           <h3 class="text-xl font-semibold mb-2">Скоро...</h3>
           <p class="text-gray-400">Мы работаем над новым захватывающим проектом. Следите за обновлениями в наших соцсетях!</p>
           
-          <!-- Кнопки Discord и Telegram -->
           <div class="btn-container">
             <a href="https://discord.gg/3aEfP79muc" class="discord-btn">
               <i class="fab fa-discord"></i> Discord
             </a>
             <a href="https://t.me/atlantis_studio_chat" class="telegram-btn">
               <i class="fab fa-telegram-plane"></i> Telegram
+            </a>
+            <a href="https://github.com/atlantis-studio" class="github-btn">
+              <i class="fab fa-github"></i> GitHub
             </a>
           </div>
         </div>
@@ -308,4 +327,4 @@
     });
   </script>
 </body>
-    </html>
+  </html>
