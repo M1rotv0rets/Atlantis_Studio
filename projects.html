@@ -58,6 +58,58 @@
       opacity: 1;
       transform: translateY(0);
     }
+    
+    .card-content {
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+    }
+    .card-description {
+      flex-grow: 1;
+    }
+    
+    .settings-dropdown {
+      position: absolute;
+      top: 100%;
+      right: 0;
+      background-color: #1f2937;
+      border-radius: 0.5rem;
+      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.5);
+      width: 200px;
+      opacity: 0;
+      transform: translateY(-10px);
+      visibility: hidden;
+      transition: all 0.3s ease;
+      z-index: 100;
+    }
+    .settings-dropdown.open {
+      opacity: 1;
+      transform: translateY(0);
+      visibility: visible;
+    }
+    .settings-dropdown a {
+      display: block;
+      padding: 0.75rem 1rem;
+      color: #e5e7eb;
+      transition: background-color 0.2s;
+    }
+    .settings-dropdown a:hover {
+      background-color: #374151;
+    }
+    .settings-dropdown a i {
+      margin-right: 0.75rem;
+      width: 20px;
+      text-align: center;
+    }
+    
+    .mobile-settings-submenu {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease-out;
+    }
+    .mobile-settings-submenu.open {
+      max-height: 200px;
+    }
   </style>
 </head>
 <body class="bg-gray-900 text-white font-sans">
@@ -68,12 +120,23 @@
         <h1 class="text-2xl font-bold text-white">🌊 Atlantis Studio</h1>
       </div>
       
-      <nav class="hidden md:flex space-x-6 animate-fade-in delay-200">
+      <nav class="hidden md:flex space-x-6 animate-fade-in delay-200 items-center">
         <a href="index.html" class="hover:text-gray-300">Главная</a> 
         <a href="projects.html" class="hover:text-gray-300">Проекты</a>
         <a href="contats.html" class="hover:text-gray-300">Контакты</a>
         <a href="about.html" class="hover:text-gray-300">О нас</a>
-        <a href="settigs.html" class="hover:text-gray-300">Настройки</a>
+        
+        <div class="relative">
+          <button id="settingsBtn" class="hover:text-gray-300 flex items-center">
+            Настройки <i class="fas fa-cog ml-2"></i>
+          </button>
+          
+          <div id="settingsDropdown" class="settings-dropdown">
+            <a href="#"><i class="fas fa-sign-in-alt"></i> Войти</a>
+            <a href="#"><i class="fas fa-moon"></i> Сменить тему</a>
+            <a href="#"><i class="fas fa-globe"></i> Язык</a>
+          </div>
+        </div>
       </nav>
       
       <button id="burgerBtn" class="md:hidden text-white focus:outline-none animate-fade-in delay-200">
@@ -89,7 +152,19 @@
         <a href="projects.html" class="py-2 hover:text-gray-300 border-b border-gray-800">Проекты</a>
         <a href="contats.html" class="py-2 hover:text-gray-300 border-b border-gray-800">Контакты</a>
         <a href="about.html" class="py-2 hover:text-gray-300 border-b border-gray-800">О нас</a>
-        <a href="settigs.html" class="py-2 hover:text-gray-300">Настройки</a>
+        
+        <div class="py-2 border-b border-gray-800">
+          <button id="mobileSettingsBtn" class="w-full text-left hover:text-gray-300 flex justify-between items-center">
+            <span>Настройки</span>
+            <i class="fas fa-chevron-down text-xs"></i>
+          </button>
+          
+          <div id="mobileSettingsMenu" class="mobile-settings-submenu bg-gray-900 rounded-lg mt-1">
+            <a href="#" class="block py-2 pl-4 hover:text-gray-300"><i class="fas fa-sign-in-alt mr-2"></i>Войти</a>
+            <a href="#" class="block py-2 pl-4 hover:text-gray-300"><i class="fas fa-moon mr-2"></i>Сменить тему</a>
+            <a href="#" class="block py-2 pl-4 hover:text-gray-300"><i class="fas fa-globe mr-2"></i>Язык</a>
+          </div>
+        </div>
       </div>
     </div>
   </header>
@@ -104,43 +179,49 @@
 
   <section class="py-16 px-6 md:px-20 bg-gray-950">
     <div class="grid gap-10 md:grid-cols-2 lg:grid-cols-3">
-      <div class="bg-gray-900 rounded-2xl overflow-hidden shadow-lg hover:shadow-pink-500/30 transition hover:-translate-y-1"
+      <div class="bg-gray-900 rounded-2xl overflow-hidden shadow-lg hover:shadow-pink-500/30 transition hover:-translate-y-1 flex flex-col"
            data-aos="fade-right" data-aos-delay="100" data-aos-duration="600">
         <img src="Images/projects1.png" alt="Project 1" 
              class="w-full h-48 object-cover transform transition duration-500 hover:scale-105">
-        <div class="p-6">
-          <h3 class="text-xl font-semibold mb-2">Car Racing Simulator</h3>
-          <p class="text-gray-400">Мобильный симулятор вождения разных автомобилей с реалистичной физикой и рабочим экраном-интерфейсом внутри автомобилей.</p>
+        <div class="card-content p-6">
+          <div class="card-description">
+            <h3 class="text-xl font-semibold mb-2">Car Racing Simulator</h3>
+            <p class="text-gray-400">Мобильный симулятор вождения разных автомобилей с реалистичной физикой и рабочим экраном-интерфейсом внутри автомобилей.</p>
+          </div>
           <div class="mt-4">
             <button class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg transition transform hover:scale-105">
-            <a href="Car Racing Simulator/index.html">Подробнее</a>
+              <a href="Car Racing Simulator/index.html">Подробнее</a>
             </button>
           </div>
         </div>
       </div>
       
-      <div class="bg-gray-900 rounded-2xl overflow-hidden shadow-lg hover:shadow-pink-500/30 transition hover:-translate-y-1"
+      <div class="bg-gray-900 rounded-2xl overflow-hidden shadow-lg hover:shadow-pink-500/30 transition hover:-translate-y-1 flex flex-col"
            data-aos="fade-up" data-aos-delay="200" data-aos-duration="600">
         <img src="Images/projects2.png" alt="Project 2" 
              class="w-full h-48 object-cover transform transition duration-500 hover:scale-105">
-        <div class="p-6">
-          <h3 class="text-xl font-semibold mb-2">Cobalt Launcher</h3>
-          <p class="text-gray-400">Свободный альтернативный и бесплатный лаунчер майнкрафт с огромным количеством инструментов и много другого...</p>
+        <div class="card-content p-6">
+          <div class="card-description">
+            <h3 class="text-xl font-semibold mb-2">Cobalt Launcher</h3>
+            <p class="text-gray-400">Свободный альтернативный и бесплатный лаунчер майнкрафт с огромным количеством инструментов и много другого...</p>
+          </div>
           <div class="mt-4">
             <button class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg transition transform hover:scale-105">
-            <a href="Cobalt Launcher/index.html">Подробнее</a>
+              <a href="Cobalt Launcher/index.html">Подробнее</a>
             </button>
           </div>
         </div>
       </div>
       
-      <div class="bg-gray-900 rounded-2xl overflow-hidden shadow-lg hover:shadow-pink-500/30 transition hover:-translate-y-1"
+      <div class="bg-gray-900 rounded-2xl overflow-hidden shadow-lg hover:shadow-pink-500/30 transition hover:-translate-y-1 flex flex-col"
            data-aos="fade-left" data-aos-delay="300" data-aos-duration="600">
         <img src="Images/projects3.png" alt="Projects 3" 
              class="w-full h-48 object-cover transform transition duration-500 hover:scale-105">
-        <div class="p-6">
-          <h3 class="text-xl font-semibold mb-2">Скоро...</h3>
-          <p class="text-gray-400">Скоро...</p>
+        <div class="card-content p-6">
+          <div class="card-description">
+            <h3 class="text-xl font-semibold mb-2">Скоро...</h3>
+            <p class="text-gray-400">Скоро...</p>
+          </div>
           <div class="mt-4">
             <button class="bg-gray-700 hover:bg-gray-600 text-white px-4 py-2 rounded-lg transition transform hover:scale-105">
               Ожидайте
@@ -233,6 +314,50 @@
         el.style.animationDelay = `${index * 0.1}s`;
       });
     });
+    
+    const settingsBtn = document.getElementById('settingsBtn');
+    const settingsDropdown = document.getElementById('settingsDropdown');
+    
+    settingsBtn.addEventListener('click', function(e) {
+      e.stopPropagation();
+      settingsDropdown.classList.toggle('open');
+    });
+    
+    document.addEventListener('click', function(e) {
+      if (!settingsDropdown.contains(e.target) {
+        settingsDropdown.classList.remove('open');
+      }
+    });
+    
+    const mobileSettingsBtn = document.getElementById('mobileSettingsBtn');
+    const mobileSettingsMenu = document.getElementById('mobileSettingsMenu');
+    
+    mobileSettingsBtn.addEventListener('click', function(e) {
+      e.stopPropagation();
+      mobileSettingsMenu.classList.toggle('open');
+      
+      const icon = mobileSettingsBtn.querySelector('i');
+      if (mobileSettingsMenu.classList.contains('open')) {
+        icon.classList.remove('fa-chevron-down');
+        icon.classList.add('fa-chevron-up');
+      } else {
+        icon.classList.remove('fa-chevron-up');
+        icon.classList.add('fa-chevron-down');
+      }
+    });
+    
+    mobileSettingsMenu.addEventListener('click', function(e) {
+      e.stopPropagation();
+    });
+    
+    document.addEventListener('click', function(e) {
+      if (!mobileSettingsMenu.contains(e.target)) {
+        mobileSettingsMenu.classList.remove('open');
+        const icon = mobileSettingsBtn.querySelector('i');
+        icon.classList.remove('fa-chevron-up');
+        icon.classList.add('fa-chevron-down');
+      }
+    });
   </script>
 </body>
-    </html>
+          </html>
