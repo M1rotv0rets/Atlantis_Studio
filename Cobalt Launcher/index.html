@@ -1,102 +1,85 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8">
-  <title>🌠 Cobalt Launcher</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>🌊 Главная страница</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
-    body {
-      margin: 0;
-      font-family: 'Segoe UI', sans-serif;
-      background-color: #0a0f2c;
-      color: #e0e8ff;
+    html {
+      scroll-behavior: smooth;
     }
-
-    header {
-      background-color: #0d133f;
-      padding: 1rem 2rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      box-shadow: 0 2px 6px #0006;
+    .sticky-header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      transition: box-shadow 0.3s ease;
     }
-
-    header h1 {
-      margin: 0;
-      font-size: 1.8rem;
-      color: #7aa0ff;
+    .scrolled {
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
     }
-
-    nav a {
-      color: #e0e8ff;
-      text-decoration: none;
-      margin-left: 20px;
-      font-weight: bold;
-      transition: color 0.3s;
-    }
-
-    nav a:hover {
-      color: #7aa0ff;
-    }
-
-    main {
-      padding: 2rem;
-      max-width: 800px;
-      margin: auto;
-    }
-
-    section {
-      display: none;
-    }
-
-    section.active {
+    .burger-line {
       display: block;
+      height: 2px;
+      width: 25px;
+      background: white;
+      margin: 5px auto;
+      transition: all 0.3s ease;
     }
-
-    .btn {
-      display: inline-block;
-      padding: 10px 20px;
-      background-color: #1a2a5e;
-      color: white;
-      border: none;
-      border-radius: 6px;
-      margin-top: 20px;
-      text-decoration: none;
-      transition: background-color 0.3s;
+    .mobile-menu {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.5s ease-out;
     }
-
-    .btn:hover {
-      background-color: #2b3f8f;
-    }
-
-    footer {
-      text-align: center;
-      padding: 1rem;
-      font-size: 0.9rem;
-      color: #8894c6;
+    .mobile-menu.open {
+      max-height: 300px;
     }
   </style>
 </head>
-<body>
+<body class="bg-gray-900 text-white font-sans">
 
-  <header>
-    <h1>🌠 Cobalt Launcher</h1>
-    <nav>
-      <a href="#" onclick="showPage('home')">Главная</a>
-      <a href="#" onclick="showPage('about')">О нас</a>
-      <a href="#" onclick="showPage('download')">Скачать</a>
-      <a href="wiki.html" class="hover:text-gray-300">Проекты</a>
-    </nav>
+  <header class="bg-gray-950 shadow-md sticky-header">
+    <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+      <div class="flex items-center">
+        <h1 class="text-2xl font-bold text-white">🌊 Atlantis Studio</h1>
+      </div>
+      
+      <nav class="hidden md:flex space-x-6">
+        <a href="index.html" class="hover:text-gray-300">Главная</a> 
+        <a href="projects.html" class="hover:text-gray-300">Проекты</a>
+        <a href="contats.html" class="hover:text-gray-300">Контакты</a>
+      </nav>
+      
+      <button id="burgerBtn" class="md:hidden text-white focus:outline-none">
+        <div class="burger-line"></div>
+        <div class="burger-line"></div>
+        <div class="burger-line"></div>
+      </button>
+    </div>
+    
+    <div id="mobileMenu" class="mobile-menu bg-gray-950 md:hidden">
+      <div class="flex flex-col px-6 pb-4">
+        <a href="index.html" class="py-2 hover:text-gray-300 border-b border-gray-800">Главная</a> 
+        <a href="projects.html" class="py-2 hover:text-gray-300 border-b border-gray-800">Проекты</a>
+        <a href="contats.html" class="py-2 hover:text-gray-300 border-b border-gray-800">Контакты</a>
+      </div>
+    </div>
   </header>
 
-  <main>
-    <section id="home" class="active">
+  <section class="text-center py-24 px-4 bg-gradient-to-b from-gray-900 to-gray-800" data-aos="fade-up">
+    <h2 class="text-4xl sm:text-5xl font-bold mb-6">Мы создаем будущее</h2>
+    <p class="text-lg sm:text-xl text-gray-300 max-w-2xl mx-auto">
+     Наша студия создает новейшие мобильные и ПК игры и приложения
+    </p>
+    
+    <section>
       <h2>Добро пожаловать в Cobalt Launcher</h2>
       <p>Идеальный лаунчер для запуска Minecraft с модами, аккаунтами и удобной системой версий.</p>
-      <a class="btn" href="#" onclick="showPage('download')">Скачать сейчас</a>
     </section>
 
-    <section id="about">
+    <section>
       <h2>О нас</h2>
       <p>Cobalt Launcher — это бесплатный лаунчер, созданный сообществом для игроков. Мы стремимся предоставить удобный, лёгкий и гибкий инструмент для запуска Minecraft.</p>
       <ul>
@@ -107,24 +90,62 @@
       </ul>
     </section>
 
-    <section id="download">
+    <section>
       <h2>Скачать</h2>
       <p>Нажмите на кнопку ниже, чтобы скачать последнюю версию Cobalt Launcher:</p>
       <a class="btn" href="#">Скачать .exe</a>
     </section>
-  </main>
 
-  <footer>
-    &copy; 2025 Cobalt Launcher. Все права защищены.
+  <footer class="bg-gray-950 py-10 text-center text-gray-400 text-sm">
+    © 2025 Atlantis Studio. Все права защищены.
   </footer>
 
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
   <script>
-    function showPage(pageId) {
-      document.querySelectorAll('section').forEach(section => {
-        section.classList.remove('active');
+    AOS.init({
+      duration: 1000,
+      once: true,
+      offset: 100
+    });
+
+    window.addEventListener('scroll', function() {
+      const header = document.querySelector('header');
+      if (window.scrollY > 10) {
+        header.classList.add('scrolled');
+      } else {
+        header.classList.remove('scrolled');
+      }
+    });
+
+
+    const burgerBtn = document.getElementById('burgerBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    
+    burgerBtn.addEventListener('click', function() {
+      mobileMenu.classList.toggle('open');
+      
+      const lines = document.querySelectorAll('.burger-line');
+      if (mobileMenu.classList.contains('open')) {
+        lines[0].style.transform = 'translateY(7px) rotate(45deg)';
+        lines[1].style.opacity = '0';
+        lines[2].style.transform = 'translateY(-7px) rotate(-45deg)';
+      } else {
+        lines[0].style.transform = 'none';
+        lines[1].style.opacity = '1';
+        lines[2].style.transform = 'none';
+      }
+    });
+    
+    const menuItems = mobileMenu.querySelectorAll('a');
+    menuItems.forEach(item => {
+      item.addEventListener('click', () => {
+        mobileMenu.classList.remove('open');
+        const lines = document.querySelectorAll('.burger-line');
+        lines[0].style.transform = 'none';
+        lines[1].style.opacity = '1';
+        lines[2].style.transform = 'none';
       });
-      document.getElementById(pageId).classList.add('active');
-    }
+    });
   </script>
 </body>
-</html>
+  </html>
