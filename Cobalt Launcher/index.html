@@ -1,1 +1,129 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>Cobalt Launcher</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #0a0f2c;
+      color: #e0e8ff;
+    }
 
+    header {
+      background-color: #0d133f;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 2px 6px #0006;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 1.8rem;
+      color: #7aa0ff;
+    }
+
+    nav a {
+      color: #e0e8ff;
+      text-decoration: none;
+      margin-left: 20px;
+      font-weight: bold;
+      transition: color 0.3s;
+    }
+
+    nav a:hover {
+      color: #7aa0ff;
+    }
+
+    main {
+      padding: 2rem;
+      max-width: 800px;
+      margin: auto;
+    }
+
+    section {
+      display: none;
+    }
+
+    section.active {
+      display: block;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 10px 20px;
+      background-color: #1a2a5e;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      margin-top: 20px;
+      text-decoration: none;
+      transition: background-color 0.3s;
+    }
+
+    .btn:hover {
+      background-color: #2b3f8f;
+    }
+
+    footer {
+      text-align: center;
+      padding: 1rem;
+      font-size: 0.9rem;
+      color: #8894c6;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Cobalt Launcher</h1>
+    <nav>
+      <a href="#" onclick="showPage('home')">Главная</a>
+      <a href="#" onclick="showPage('about')">О нас</a>
+      <a href="#" onclick="showPage('download')">Скачать</a>
+    </nav>
+  </header>
+
+  <main>
+    <section id="home" class="active">
+      <h2>Добро пожаловать в Cobalt Launcher</h2>
+      <p>Идеальный лаунчер для запуска Minecraft с модами, аккаунтами и удобной системой версий.</p>
+      <a class="btn" href="#" onclick="showPage('download')">Скачать сейчас</a>
+    </section>
+
+    <section id="about">
+      <h2>О нас</h2>
+      <p>Cobalt Launcher — это бесплатный лаунчер, созданный сообществом для игроков. Мы стремимся предоставить удобный, лёгкий и гибкий инструмент для запуска Minecraft.</p>
+      <ul>
+        <li>Поддержка Java и Bedrock версий</li>
+        <li>Forge и Fabric модлоадеры</li>
+        <li>Мультиаккаунты</li>
+        <li>Автоматическая установка Java</li>
+      </ul>
+    </section>
+
+    <section id="download">
+      <h2>Скачать</h2>
+      <p>Нажмите на кнопку ниже, чтобы скачать последнюю версию Cobalt Launcher:</p>
+      <a class="btn" href="#">Скачать .exe</a>
+    </section>
+  </main>
+
+  <footer>
+    &copy; 2025 Cobalt Launcher. Все права защищены.
+  </footer>
+
+  <script>
+    function showPage(pageId) {
+      document.querySelectorAll('section').forEach(section => {
+        section.classList.remove('active');
+      });
+      document.getElementById(pageId).classList.add('active');
+    }
+  </script>
+</body>
+</html>
