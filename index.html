@@ -3,24 +3,69 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Главная страница</title>
+  <title>Atlantis Studio | Создаем будущее</title>
   <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="icon" href="Images/Icon.png">
   <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
+    :root {
+      --primary: #0f172a;
+      --secondary: #1e293b;
+      --accent: #0ea5e9;
+      --accent-light: #22d3ee;
+      --accent-dark: #0369a1;
+      --purple: #8b5cf6;
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
     html {
       scroll-behavior: smooth;
+      font-family: 'Raleway', sans-serif;
     }
+    
+    body {
+      background: linear-gradient(135deg, var(--primary) 0%, #1c1f2e 100%);
+      color: white;
+      overflow-x: hidden;
+      position: relative;
+    }
+    
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: 
+        radial-gradient(circle at 10% 20%, rgba(14, 165, 233, 0.15) 0%, transparent 20%),
+        radial-gradient(circle at 90% 80%, rgba(139, 92, 246, 0.15) 0%, transparent 20%);
+      pointer-events: none;
+      z-index: -1;
+    }
+    
     .sticky-header {
       position: sticky;
       top: 0;
-      z-index: 50;
-      transition: box-shadow 0.3s ease;
+      z-index: 100;
+      transition: all 0.4s ease;
+      backdrop-filter: blur(10px);
+      background: rgba(15, 23, 42, 0.85);
+      border-bottom: 1px solid rgba(56, 189, 248, 0.1);
     }
+    
     .scrolled {
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
     }
+    
     .burger-line {
       display: block;
       height: 2px;
@@ -29,85 +74,491 @@
       margin: 5px auto;
       transition: all 0.3s ease;
     }
+    
     .mobile-menu {
       max-height: 0;
       overflow: hidden;
       transition: max-height 0.5s ease-out;
+      background: rgba(15, 23, 42, 0.95);
     }
+    
     .mobile-menu.open {
       max-height: 300px;
     }
+    
+    .hero {
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .hero::before {
+      content: "";
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(ellipse at center, rgba(34, 211, 238, 0.1) 0%, rgba(0, 0, 0, 0) 70%);
+      z-index: 0;
+      animation: rotate 30s linear infinite;
+    }
+    
+    @keyframes rotate {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+    
+    .btn {
+      display: inline-block;
+      padding: 12px 28px;
+      border-radius: 50px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+      z-index: 1;
+      border: 2px solid transparent;
+    }
+    
+    .btn-primary {
+      background: linear-gradient(90deg, var(--accent) 0%, var(--purple) 100%);
+      color: white;
+    }
+    
+    .btn-primary:hover {
+      background: linear-gradient(90deg, var(--accent-dark) 0%, #7c3aed 100%);
+      transform: translateY(-3px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    }
+    
+    .card {
+      background: rgba(30, 41, 59, 0.7);
+      border-radius: 20px;
+      overflow: hidden;
+      position: relative;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(56, 189, 248, 0.1);
+    }
+    
+    .card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 20px 30px rgba(0, 0, 0, 0.3);
+    }
+    
+    .card::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 5px;
+      background: linear-gradient(90deg, var(--accent) 0%, var(--purple) 100%);
+    }
+    
+    .feature-icon {
+      width: 70px;
+      height: 70px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 20px;
+      background: rgba(14, 165, 233, 0.1);
+      font-size: 28px;
+      color: var(--accent-light);
+    }
+    
+    .project-card {
+      border-radius: 15px;
+      overflow: hidden;
+      position: relative;
+      height: 300px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+      transition: transform 0.4s ease;
+    }
+    
+    .project-card:hover {
+      transform: scale(1.03);
+    }
+    
+    .project-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+    
+    .project-card:hover img {
+      transform: scale(1.1);
+    }
+    
+    .project-overlay {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: linear-gradient(to top, rgba(15, 23, 42, 0.9) 0%, transparent 100%);
+      padding: 30px 20px 20px;
+      transform: translateY(10px);
+      opacity: 0;
+      transition: all 0.4s ease;
+    }
+    
+    .project-card:hover .project-overlay {
+      transform: translateY(0);
+      opacity: 1;
+    }
+    
+    .wave-divider {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      overflow: hidden;
+      line-height: 0;
+      transform: rotate(180deg);
+    }
+    
+    .wave-divider svg {
+      position: relative;
+      display: block;
+      width: calc(100% + 1.3px);
+      height: 100px;
+    }
+    
+    .wave-divider .shape-fill {
+      fill: var(--secondary);
+    }
+    
+    .footer-wave {
+      position: absolute;
+      top: -100px;
+      left: 0;
+      width: 100%;
+      overflow: hidden;
+      line-height: 0;
+    }
+    
+    .footer-wave svg {
+      position: relative;
+      display: block;
+      width: calc(100% + 1.3px);
+      height: 100px;
+    }
+    
+    .footer-wave .shape-fill {
+      fill: var(--primary);
+    }
+    
+    .social-icon {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.05);
+      color: var(--accent-light);
+      font-size: 20px;
+      transition: all 0.3s ease;
+    }
+    
+    .social-icon:hover {
+      background: var(--accent);
+      color: white;
+      transform: translateY(-5px);
+    }
+    
+    .floating {
+      animation: floating 6s ease-in-out infinite;
+    }
+    
+    @keyframes floating {
+      0% { transform: translateY(0px); }
+      50% { transform: translateY(-20px); }
+      100% { transform: translateY(0px); }
+    }
+    
+    .pulse {
+      animation: pulse 2s infinite;
+    }
+    
+    @keyframes pulse {
+      0% { box-shadow: 0 0 0 0 rgba(14, 165, 233, 0.7); }
+      70% { box-shadow: 0 0 0 15px rgba(14, 165, 233, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(14, 165, 233, 0); }
+    }
   </style>
 </head>
-<body class="bg-gray-900 text-white font-sans">
+<body class="min-h-screen">
 
-  <header class="bg-gray-950 shadow-md sticky-header">
+  <header class="sticky-header">
     <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
       <div class="flex items-center">
-        <h1 class="text-2xl font-bold text-white">🌊 Atlantis Studio</h1>
+        <div class="bg-gradient-to-br from-blue-500 to-purple-600 p-2 rounded-lg mr-3">
+          <i class="fas fa-water text-white text-xl"></i>
+        </div>
+        <h1 class="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-400">Atlantis Studio</h1>
       </div>
       
-      <nav class="hidden md:flex space-x-6">
-        <a href="index.html" class="hover:text-gray-300">Главная</a> 
-        <a href="projects.html" class="hover:text-gray-300">Проекты</a>
-        <a href="contats.html" class="hover:text-gray-300">Контакты</a>
+      <nav class="hidden md:flex space-x-8 items-center">
+        <a href="index.html" class="hover:text-blue-300 transition-all font-medium relative group">
+          Главная
+          <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-blue-400 transition-all group-hover:w-full"></span>
+        </a> 
+        <a href="projects.html" class="hover:text-blue-300 transition-all font-medium relative group">
+          Проекты
+          <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-blue-400 transition-all group-hover:w-full"></span>
+        </a>
+        <a href="contats.html" class="hover:text-blue-300 transition-all font-medium relative group">
+          Контакты
+          <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-blue-400 transition-all group-hover:w-full"></span>
+        </a>
+        <a href="contats.html" class="btn btn-primary ml-4">
+          Связаться
+        </a>
       </nav>
       
-      <button id="burgerBtn" class="md:hidden text-white focus:outline-none">
+      <button id="burgerBtn" class="md:hidden text-white focus:outline-none z-50">
         <div class="burger-line"></div>
         <div class="burger-line"></div>
         <div class="burger-line"></div>
       </button>
     </div>
     
-    <div id="mobileMenu" class="mobile-menu bg-gray-950 md:hidden">
+    <div id="mobileMenu" class="mobile-menu md:hidden">
       <div class="flex flex-col px-6 pb-4">
-        <a href="index.html" class="py-2 hover:text-gray-300 border-b border-gray-800">Главная</a> 
-        <a href="projects.html" class="py-2 hover:text-gray-300 border-b border-gray-800">Проекты</a>
-        <a href="contats.html" class="py-2 hover:text-gray-300 border-b border-gray-800">Контакты</a>
+        <a href="index.html" class="py-3 hover:text-blue-300 border-b border-gray-700 transition-all">Главная</a> 
+        <a href="projects.html" class="py-3 hover:text-blue-300 border-b border-gray-700 transition-all">Проекты</a>
+        <a href="contats.html" class="py-3 hover:text-blue-300 border-b border-gray-700 transition-all">Контакты</a>
+        <a href="contats.html" class="btn btn-primary mt-4 text-center">Связаться</a>
       </div>
     </div>
   </header>
 
-  <section class="text-center py-24 px-4 bg-gradient-to-b from-gray-900 to-gray-800" data-aos="fade-up">
-    <h2 class="text-4xl sm:text-5xl font-bold mb-6">Мы создаем будущее</h2>
-    <p class="text-lg sm:text-xl text-gray-300 max-w-2xl mx-auto">
-     Наша студия создает новейшие мобильные и ПК игры и приложения
-    </p>
-  </section>
-
-  <section class="max-w-6xl mx-auto px-6 py-20 grid md:grid-cols-2 gap-12 items-center">
-    <div data-aos="fade-right">
-      <h3 class="text-3xl font-semibold mb-4">Про нас</h3>
-      <p class="text-gray-300 text-lg leading-relaxed">
-      Atlantis Studio – это команда разработчиков, кодеров, дизайнеров и энтузиастов, объединенных пристрастием к технологиям и созданием игр и приложений. С 2022 года мы создаем инновационные проекты с упором на реализм, интерактивность и уникальный визуальный стиль, полезность и функциональность. Также вы можете увидеть на скриншоте в правой части сайта один из наших игровых проектов под названием Car Racing Simulator – CRS.
+  <section class="hero text-center py-32 px-4 relative" data-aos="fade-up">
+    <div class="max-w-4xl mx-auto relative z-10">
+      <div class="inline-block mb-6">
+        <span class="text-blue-400 font-bold text-sm uppercase tracking-wider bg-blue-900/30 py-1.5 px-4 rounded-full">Новая эра разработки</span>
+      </div>
+      <h1 class="text-5xl sm:text-6xl md:text-7xl font-bold mb-6 leading-tight">
+        Мы создаем <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-400">будущее</span>
+      </h1>
+      <p class="text-xl text-blue-100 max-w-2xl mx-auto mb-10">
+        Инновационные мобильные и ПК игры и приложения от команды энтузиастов
       </p>
+      <div class="flex flex-col sm:flex-row justify-center gap-4">
+        <a href="projects.html" class="btn btn-primary">
+          Наши проекты
+        </a>
+        <a href="contats.html" class="btn bg-gray-800 border border-blue-500/30 hover:bg-gray-700">
+          <i class="fas fa-comment-dots mr-2"></i> Обсудить проект
+        </a>
+      </div>
     </div>
-    <img src="Images/About.png" alt="О студии" class="rounded-2xl shadow-lg" data-aos="fade-left">
+    
+    <div class="wave-divider">
+      <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+          <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" class="shape-fill"></path>
+      </svg>
+    </div>
   </section>
 
-  <section class="bg-gray-800 py-20">
-    <div class="max-w-6xl mx-auto px-6 text-center">
-      <h3 class="text-3xl font-bold mb-12" data-aos="zoom-in">Наши ценности</h3>
-      <div class="grid md:grid-cols-3 gap-10">
-        <div class="p-6 bg-gray-900 rounded-xl shadow-md" data-aos="fade-up" data-aos-delay="100">
-          <h4 class="text-xl font-semibold mb-3">Инновации</h4>
-          <p class="text-gray-400">Мы всегда на шаг впереди, внедряя передовые технологии в каждый проект.</p>
+  <section class="py-20 bg-gray-800 relative">
+    <div class="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-16 items-center">
+      <div data-aos="fade-right">
+        <div class="inline-block mb-6">
+          <span class="text-blue-400 font-bold text-sm uppercase tracking-wider bg-blue-900/30 py-1.5 px-4 rounded-full">О студии</span>
         </div>
-        <div class="p-6 bg-gray-900 rounded-xl shadow-md" data-aos="fade-up" data-aos-delay="200">
-          <h4 class="text-xl font-semibold mb-3">Качество</h4>
-          <p class="text-gray-400">Каждая деталь имеет значение — мы стремимся к совершенству в дизайне и коде.</p>
+        <h3 class="text-4xl font-bold mb-6">Погрузитесь в мир инноваций</h3>
+        <p class="text-gray-200 text-lg leading-relaxed mb-6">
+          Atlantis Studio – это команда разработчиков, кодеров, дизайнеров и энтузиастов, объединенных пристрастием к технологиям и созданием игр и приложений. С 2022 года мы создаем инновационные проекты с упором на реализм, интерактивность и уникальный визуальный стиль.
+        </p>
+        <p class="text-gray-200 text-lg leading-relaxed mb-8">
+          Наши решения сочетают в себе функциональность, эстетику и передовые технологии, чтобы создавать продукты, которые впечатляют и вдохновляют.
+        </p>
+        <div class="flex items-center space-x-4">
+          <div class="flex -space-x-3">
+            <div class="w-12 h-12 rounded-full bg-gradient-to-br from-blue-500 to-purple-600 border-2 border-gray-800"></div>
+            <div class="w-12 h-12 rounded-full bg-gradient-to-br from-green-500 to-cyan-600 border-2 border-gray-800"></div>
+            <div class="w-12 h-12 rounded-full bg-gradient-to-br from-purple-500 to-pink-600 border-2 border-gray-800"></div>
+          </div>
+          <div>
+            <p class="font-bold">Команда профессионалов</p>
+            <p class="text-sm text-gray-400">12 разработчиков, 6 дизайнеров, 4 тестировщика</p>
+          </div>
         </div>
-        <div class="p-6 bg-gray-900 rounded-xl shadow-md" data-aos="fade-up" data-aos-delay="300">
-          <h4 class="text-xl font-semibold mb-3">Команда</h4>
-          <p class="text-gray-400">Мы верим, что сильная команда – залог большого продукта.</p>
+      </div>
+      
+      <div class="relative" data-aos="fade-left">
+        <div class="relative rounded-2xl overflow-hidden shadow-2xl border-4 border-gray-700">
+          <div class="absolute inset-0 bg-gradient-to-br from-blue-500/10 to-purple-600/10 z-10"></div>
+          <div class="bg-gray-200 border-2 border-dashed rounded-xl w-full h-96" />
+        </div>
+        <div class="absolute -bottom-6 -right-6 bg-gradient-to-br from-blue-500 to-purple-600 p-4 rounded-lg shadow-xl">
+          <p class="font-bold text-white">Car Racing Simulator</p>
+          <p class="text-xs text-blue-100">Новый проект в разработке</p>
         </div>
       </div>
     </div>
   </section>
 
-  <footer class="bg-gray-950 py-10 text-center text-gray-400 text-sm">
-    © 2025 Atlantis Studio. Все права защищены.
+  <section class="py-20 relative">
+    <div class="max-w-6xl mx-auto px-6 text-center">
+      <div class="inline-block mb-6">
+        <span class="text-blue-400 font-bold text-sm uppercase tracking-wider bg-blue-900/30 py-1.5 px-4 rounded-full">Наши принципы</span>
+      </div>
+      <h3 class="text-4xl font-bold mb-16" data-aos="zoom-in">Ценности, которые нас определяют</h3>
+      
+      <div class="grid md:grid-cols-3 gap-10">
+        <div class="card p-8" data-aos="fade-up" data-aos-delay="100">
+          <div class="feature-icon">
+            <i class="fas fa-lightbulb"></i>
+          </div>
+          <h4 class="text-xl font-bold mb-3">Инновации</h4>
+          <p class="text-gray-300">Мы всегда на шаг впереди, внедряя передовые технологии в каждый проект и исследуя новые горизонты разработки.</p>
+        </div>
+        
+        <div class="card p-8" data-aos="fade-up" data-aos-delay="200">
+          <div class="feature-icon">
+            <i class="fas fa-medal"></i>
+          </div>
+          <h4 class="text-xl font-bold mb-3">Качество</h4>
+          <p class="text-gray-300">Каждая деталь имеет значение — мы стремимся к совершенству в дизайне, коде и пользовательском опыте.</p>
+        </div>
+        
+        <div class="card p-8" data-aos="fade-up" data-aos-delay="300">
+          <div class="feature-icon">
+            <i class="fas fa-users"></i>
+          </div>
+          <h4 class="text-xl font-bold mb-3">Команда</h4>
+          <p class="text-gray-300">Мы верим, что сильная команда – залог большого продукта. Взаимоподдержка и коллаборация - наш стиль работы.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-20 bg-gray-800 relative">
+    <div class="wave-divider">
+      <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+          <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" class="shape-fill"></path>
+      </svg>
+    </div>
+    
+    <div class="max-w-6xl mx-auto px-6 text-center">
+      <div class="inline-block mb-6">
+        <span class="text-blue-400 font-bold text-sm uppercase tracking-wider bg-blue-900/30 py-1.5 px-4 rounded-full">Наши работы</span>
+      </div>
+      <h3 class="text-4xl font-bold mb-4">Проекты, которыми мы гордимся</h3>
+      <p class="text-gray-300 max-w-2xl mx-auto mb-16">Инновационные решения, которые изменили представление о мобильных и ПК приложениях</p>
+      
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div class="project-card" data-aos="zoom-in">
+          <div class="bg-gray-200 border-2 border-dashed rounded-xl w-full h-full" />
+          <div class="project-overlay">
+            <h4 class="text-xl font-bold mb-2">Cosmic Journey</h4>
+            <p class="text-gray-300 text-sm mb-3">Исследуйте галактики в этой захватывающей космической RPG</p>
+            <span class="inline-block bg-blue-900/50 text-blue-300 text-xs px-3 py-1 rounded-full">iOS & Android</span>
+          </div>
+        </div>
+        
+        <div class="project-card" data-aos="zoom-in" data-aos-delay="100">
+          <div class="bg-gray-200 border-2 border-dashed rounded-xl w-full h-full" />
+          <div class="project-overlay">
+            <h4 class="text-xl font-bold mb-2">Urban Builder</h4>
+            <p class="text-gray-300 text-sm mb-3">Создайте мегаполис своей мечты в стратегии нового поколения</p>
+            <span class="inline-block bg-purple-900/50 text-purple-300 text-xs px-3 py-1 rounded-full">Windows & macOS</span>
+          </div>
+        </div>
+        
+        <div class="project-card" data-aos="zoom-in" data-aos-delay="200">
+          <div class="bg-gray-200 border-2 border-dashed rounded-xl w-full h-full" />
+          <div class="project-overlay">
+            <h4 class="text-xl font-bold mb-2">Fitness Tracker Pro</h4>
+            <p class="text-gray-300 text-sm mb-3">Приложение для отслеживания здоровья и тренировок</p>
+            <span class="inline-block bg-green-900/50 text-green-300 text-xs px-3 py-1 rounded-full">iOS & Android</span>
+          </div>
+        </div>
+      </div>
+      
+      <div class="mt-16">
+        <a href="projects.html" class="btn btn-primary inline-flex items-center">
+          Все проекты <i class="fas fa-arrow-right ml-2 text-sm"></i>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-28 relative overflow-hidden">
+    <div class="absolute top-0 left-0 w-full h-full opacity-5">
+      <div class="pattern-dots pattern-blue-400 pattern-bg-transparent pattern-opacity-100 pattern-size-6 w-full h-full"></div>
+    </div>
+    
+    <div class="max-w-4xl mx-auto px-6 text-center relative z-10">
+      <div class="inline-block mb-6">
+        <span class="text-blue-400 font-bold text-sm uppercase tracking-wider bg-blue-900/30 py-1.5 px-4 rounded-full">Сотрудничество</span>
+      </div>
+      <h3 class="text-4xl font-bold mb-6">Готовы создать что-то великое вместе?</h3>
+      <p class="text-gray-300 text-lg max-w-2xl mx-auto mb-10">
+        Обсудим ваш проект и найдем идеальное решение, которое превзойдет ожидания
+      </p>
+      <a href="contats.html" class="btn btn-primary px-10 py-4 text-lg pulse">
+        Начать проект <i class="fas fa-paper-plane ml-2"></i>
+      </a>
+      
+      <div class="mt-16 flex justify-center space-x-6">
+        <a href="#" class="social-icon">
+          <i class="fab fa-vk"></i>
+        </a>
+        <a href="#" class="social-icon">
+          <i class="fab fa-telegram"></i>
+        </a>
+        <a href="#" class="social-icon">
+          <i class="fab fa-discord"></i>
+        </a>
+        <a href="#" class="social-icon">
+          <i class="fab fa-github"></i>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <footer class="bg-gray-950 py-16 text-center relative">
+    <div class="footer-wave">
+      <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+          <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" class="shape-fill"></path>
+      </svg>
+    </div>
+    
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="flex justify-center mb-8">
+        <div class="bg-gradient-to-br from-blue-500 to-purple-600 p-3 rounded-xl">
+          <i class="fas fa-water text-white text-2xl"></i>
+        </div>
+      </div>
+      
+      <h3 class="text-2xl font-bold mb-4 text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-400">Atlantis Studio</h3>
+      <p class="text-gray-400 max-w-2xl mx-auto mb-10">
+        Создаем инновационные игровые и программные решения с 2022 года
+      </p>
+      
+      <div class="flex flex-wrap justify-center gap-6 mb-10">
+        <a href="index.html" class="text-gray-400 hover:text-blue-300 transition">Главная</a>
+        <a href="projects.html" class="text-gray-400 hover:text-blue-300 transition">Проекты</a>
+        <a href="contats.html" class="text-gray-400 hover:text-blue-300 transition">Контакты</a>
+        <a href="#" class="text-gray-400 hover:text-blue-300 transition">Вакансии</a>
+        <a href="#" class="text-gray-400 hover:text-blue-300 transition">Блог</a>
+        <a href="#" class="text-gray-400 hover:text-blue-300 transition">FAQ</a>
+      </div>
+      
+      <div class="text-gray-500 text-sm">
+        © 2025 Atlantis Studio. Все права защищены.<br>
+        Разработано с <i class="fas fa-heart text-red-400 mx-1"></i> в России
+      </div>
+    </div>
   </footer>
 
   <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
@@ -126,7 +577,6 @@
         header.classList.remove('scrolled');
       }
     });
-
 
     const burgerBtn = document.getElementById('burgerBtn');
     const mobileMenu = document.getElementById('mobileMenu');
@@ -158,4 +608,4 @@
     });
   </script>
 </body>
-  </html>
+</html>
