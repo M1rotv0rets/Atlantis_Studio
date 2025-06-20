@@ -172,47 +172,6 @@
       color: var(--accent-light);
     }
     
-    .project-card {
-      border-radius: 15px;
-      overflow: hidden;
-      position: relative;
-      height: 300px;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-      transition: transform 0.4s ease;
-    }
-    
-    .project-card:hover {
-      transform: scale(1.03);
-    }
-    
-    .project-card img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: transform 0.5s ease;
-    }
-    
-    .project-card:hover img {
-      transform: scale(1.1);
-    }
-    
-    .project-overlay {
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      background: linear-gradient(to top, rgba(15, 23, 42, 0.9) 0%, transparent 100%);
-      padding: 30px 20px 20px;
-      transform: translateY(10px);
-      opacity: 0;
-      transition: all 0.4s ease;
-    }
-    
-    .project-card:hover .project-overlay {
-      transform: translateY(0);
-      opacity: 1;
-    }
-    
     .wave-divider {
       position: absolute;
       bottom: 0;
@@ -232,26 +191,6 @@
     
     .wave-divider .shape-fill {
       fill: var(--secondary);
-    }
-    
-    .footer-wave {
-      position: absolute;
-      top: -100px;
-      left: 0;
-      width: 100%;
-      overflow: hidden;
-      line-height: 0;
-    }
-    
-    .footer-wave svg {
-      position: relative;
-      display: block;
-      width: calc(100% + 1.3px);
-      height: 100px;
-    }
-    
-    .footer-wave .shape-fill {
-      fill: var(--primary);
     }
     
     .social-icon {
