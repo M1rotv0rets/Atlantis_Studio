@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Контакты студии</title>
+  <title>Проекты Atlantis Studio</title>
   <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="icon" href="Images/Icon.png">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🌊</text></svg>">
   <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -109,6 +109,32 @@
       100% { transform: rotate(360deg); }
     }
     
+    .card {
+      background: rgba(30, 41, 59, 0.7);
+      border-radius: 20px;
+      overflow: hidden;
+      position: relative;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(56, 189, 248, 0.1);
+      height: 100%;
+    }
+    
+    .card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 20px 30px rgba(0, 0, 0, 0.3);
+    }
+    
+    .card::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 5px;
+      background: linear-gradient(90deg, var(--accent) 0%, var(--purple) 100%);
+    }
+    
     .wave-divider {
       position: absolute;
       bottom: 0;
@@ -149,40 +175,14 @@
       transform: translateY(-5px);
     }
     
-    .developer-card {
-      background: rgba(30, 41, 59, 0.7);
-      border-radius: 20px;
-      overflow: hidden;
-      position: relative;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-      backdrop-filter: blur(10px);
-      border: 1px solid rgba(56, 189, 248, 0.1);
-      height: 100%;
-    }
-    
-    .developer-card:hover {
-      transform: translateY(-10px);
-      box-shadow: 0 20px 30px rgba(0, 0, 0, 0.3);
-    }
-    
-    .developer-card::before {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 5px;
-      background: linear-gradient(90deg, var(--accent) 0%, var(--purple) 100%);
-    }
-    
-    .developer-img {
-      height: 280px;
+    .project-img {
+      height: 200px;
       width: 100%;
       object-fit: cover;
       transition: transform 0.5s ease;
     }
     
-    .developer-card:hover .developer-img {
+    .card:hover .project-img {
       transform: scale(1.05);
     }
     
@@ -212,42 +212,82 @@
       font-size: 18px;
     }
     
-    .telegram-btn {
-      background-color: #29b6f6;
-      color: white;
-    }
-    
-    .telegram-btn:hover {
-      background-color: #039be5;
-      transform: translateY(-3px);
-      box-shadow: 0 6px 12px rgba(0,0,0,0.15);
-    }
-    
-    .github-btn {
-      background-color: #333;
-      color: white;
-    }
-    
-    .github-btn:hover {
-      background-color: #24292e;
-      transform: translateY(-3px);
-      box-shadow: 0 6px 12px rgba(0,0,0,0.15);
-    }
-    
-    .join-btn {
+    .details-btn {
       background: linear-gradient(90deg, var(--accent) 0%, var(--purple) 100%);
       color: white;
-      padding: 14px 28px;
-      border-radius: 50px;
-      font-weight: 600;
-      transition: all 0.3s ease;
-      font-size: 1.1rem;
     }
     
-    .join-btn:hover {
+    .details-btn:hover {
       background: linear-gradient(90deg, var(--accent-dark) 0%, #7c3aed 100%);
       transform: translateY(-3px);
-      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+      box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+    }
+    
+    .platform-tag {
+      display: inline-block;
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      margin-right: 8px;
+      margin-bottom: 8px;
+    }
+    
+    .android {
+      background-color: #3ddc84;
+      color: #000;
+    }
+    
+    .windows {
+      background-color: #0078d7;
+      color: white;
+    }
+    
+    .linux {
+      background-color: #fcc624;
+      color: #000;
+    }
+    
+    .soon-card {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100%;
+      min-height: 350px;
+      background: linear-gradient(135deg, rgba(30, 41, 59, 0.5) 0%, rgba(15, 23, 42, 0.7) 100%);
+      border-radius: 20px;
+      position: relative;
+      overflow: hidden;
+      border: 2px dashed rgba(56, 189, 248, 0.3);
+    }
+    
+    .soon-card::before {
+      content: "";
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: linear-gradient(45deg, transparent 33%, rgba(14, 165, 233, 0.1) 50%, transparent 66%);
+      background-size: 30px 30px;
+      animation: move 3s linear infinite;
+      z-index: 1;
+    }
+    
+    @keyframes move {
+      0% { transform: translate(0, 0); }
+      100% { transform: translate(30px, 30px); }
+    }
+    
+    .soon-text {
+      font-size: 2.5rem;
+      font-weight: 800;
+      background: linear-gradient(90deg, var(--accent) 0%, var(--purple) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      position: relative;
+      z-index: 2;
+      text-align: center;
     }
     
     @media (max-width: 640px) {
@@ -255,8 +295,12 @@
         flex-direction: column;
       }
       
-      .developer-img {
-        height: 220px;
+      .project-img {
+        height: 180px;
+      }
+      
+      .soon-text {
+        font-size: 2rem;
       }
     }
   </style>
@@ -303,10 +347,10 @@
   <section class="hero text-center py-32 px-4 relative" data-aos="fade-up">
     <div class="max-w-4xl mx-auto relative z-10">
       <h1 class="text-5xl sm:text-6xl md:text-7xl font-bold mb-6 leading-tight">
-        Разработчики <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-400">Atlantis</span>
+        Наши <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-400">проекты</span>
       </h1>
       <p class="text-xl text-blue-100 max-w-2xl mx-auto mb-10">
-        Талантливые создатели, стоящие за нашими проектами
+        Инновационные разработки, созданные с любовью и профессионализмом
       </p>
     </div>
     
@@ -319,59 +363,57 @@
 
   <section class="py-16 px-6 bg-gray-800 relative">
     <div class="max-w-6xl mx-auto grid md:grid-cols-2 lg:grid-cols-3 gap-10">
-      <div class="developer-card" data-aos="fade-right" data-aos-delay="100">
+      <!-- Первая карточка: Car Racing Simulator -->
+      <div class="card" data-aos="fade-right" data-aos-delay="100">
         <div class="overflow-hidden">
-          <img src="Images/The_Error.png" alt="The_Error" class="developer-img">
+          <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='600' height='400' viewBox='0 0 600 400'%3E%3Crect width='600' height='400' fill='%231e293b'/%3E%3Cpath d='M100,250 L500,250 L480,300 L120,300 Z' fill='%23374151'/%3E%3Ccircle cx='180' cy='300' r='40' fill='%23222'/%3E%3Ccircle cx='420' cy='300' r='40' fill='%23222'/%3E%3Ccircle cx='180' cy='300' r='20' fill='%23333'/%3E%3Ccircle cx='420' cy='300' r='20' fill='%23333'/%3E%3Crect x='180' y='180' width='240' height='70' rx='10' fill='%23374151'/%3E%3Crect x='200' y='200' width='200' height='30' fill='%230ea5e9' opacity='0.7'/%3E%3C/svg%3E" 
+               alt="Car Racing Simulator" class="project-img">
         </div>
         <div class="p-6">
-          <h3 class="text-xl font-bold mb-2">The_Error</h3>
-          <p class="text-gray-300 mb-4">Глава нашей студии. Отвечает за все процессы которые происходят в студии начиная от идеи заканчивая реализацией. Знает C#/Unity, Python. Разрабатывает игру Car Racing Simulator.</p>
+          <h3 class="text-2xl font-bold mb-3">Car Racing Simulator</h3>
+          <p class="text-gray-300 mb-4">Мобильный симулятор вождения разных автомобилей с реалистичной физикой и рабочим экраном-интерфейсом внутри автомобилей.</p>
+          
+          <div class="mb-5">
+            <span class="platform-tag android">Android</span>
+          </div>
           
           <div class="btn-container">
-            <a href="https://t.me/Fire_in_the_error" class="telegram-btn">
-              <i class="fab fa-telegram-plane"></i> Telegram
-            </a>
-            <a href="https://github.com/TheError227" class="github-btn">
-              <i class="fab fa-github"></i> GitHub
+            <a href="#" class="details-btn">
+              <i class="fas fa-info-circle"></i> Подробнее
             </a>
           </div>
         </div>
       </div>
       
-      <div class="developer-card" data-aos="fade-up" data-aos-delay="150">
+      <!-- Вторая карточка: Cobalt Launcher -->
+      <div class="card" data-aos="fade-up" data-aos-delay="150">
         <div class="overflow-hidden">
-          <img src="Images/WaterBucket.png" alt="WaterBucket" class="developer-img">
+          <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='600' height='400' viewBox='0 0 600 400'%3E%3Crect width='600' height='400' fill='%231e293b'/%3E%3Crect x='150' y='100' width='300' height='200' rx='15' fill='%23374151'/%3E%3Cpath d='M180,180 L420,180 L420,250 L180,250 Z' fill='%238b5cf6'/%3E%3Ccircle cx='300' cy='140' r='20' fill='%230ea5e9'/%3E%3Crect x='200' y='270' width='80' height='10' rx='5' fill='%23333'/%3E%3Crect x='320' y='270' width='80' height='10' rx='5' fill='%23333'/%3E%3C/svg%3E" 
+               alt="Cobalt Launcher" class="project-img">
         </div>
         <div class="p-6">
-          <h3 class="text-xl font-bold mb-2">WaterBucket</h3>
-          <p class="text-gray-300 mb-4">Главный кодер нашей студии. Отвечает за весь код который пишут наши кодеры. Может набирать кодеров. Знает Python/Qt, JavaScript, Java, HTML и CSS. Один из разработчиков Cobalt_Launcher.</p>
+          <h3 class="text-2xl font-bold mb-3">Cobalt Launcher</h3>
+          <p class="text-gray-300 mb-4">Свободный альтернативный и бесплатный лаунчер майнкрафт с огромным количеством инструментов и множеством возможностей.</p>
+          
+          <div class="mb-5">
+            <span class="platform-tag windows">Windows</span>
+            <span class="platform-tag linux">Linux</span>
+          </div>
           
           <div class="btn-container">
-            <a href="https://t.me/WaterBucket_smt" class="telegram-btn">
-              <i class="fab fa-telegram-plane"></i> Telegram
+            <a href="#" class="details-btn">
+              <i class="fas fa-info-circle"></i> Подробнее
             </a>
-            <a href="https://github.com/Roman12kYT" class="github-btn"> 
-              <i class="fab fa-github"></i> GitHub
-            </a>  
           </div>
         </div>
       </div>
     
-      <div class="developer-card" data-aos="fade-left" data-aos-delay="200">
-        <div class="overflow-hidden">
-          <img src="Images/M1rotvorets.png" alt="M1rotvorets" class="developer-img">
-        </div>
-        <div class="p-6">
-          <h3 class="text-xl font-bold mb-2">M1rotvorets</h3>
-          <p class="text-gray-300 mb-4">Главный дизайнер и веб-разработчик студии. Отвечает за весь дизайн и сайты студии. Знает Python/Qt, JavaScript, HTML и CSS. Отвечает за разработку Cobalt_Launcher.</p>
-          
-          <div class="btn-container">
-            <a href="https://t.me/M1rotv0rets" class="telegram-btn">
-              <i class="fab fa-telegram-plane"></i> Telegram
-            </a>
-            <a href="https://github.com/M1rotv0rets" class="github-btn">
-              <i class="fab fa-github"></i> GitHub
-            </a>
+      <!-- Третья карточка: Скоро... -->
+      <div class="soon-card" data-aos="fade-left" data-aos-delay="200">
+        <div class="p-6 text-center">
+          <div class="soon-text">
+            СКОРО<br>
+            <span style="font-size: 1.5rem; display: block; margin-top: 1rem;">Новый проект в разработке</span>
           </div>
         </div>
       </div>
@@ -384,12 +426,12 @@
     </div>
     
     <div class="max-w-4xl mx-auto px-6 text-center relative z-10">
-      <h3 class="text-4xl font-bold mb-6">Готовы создать что-то великое вместе?</h3>
+      <h3 class="text-4xl font-bold mb-6">Хотите узнать больше о наших проектах?</h3>
       <p class="text-xl text-gray-300 max-w-2xl mx-auto mb-10">
-        Присоединяйтесь к нашему сообществу и будьте в курсе всех обновлений и новых проектов
+        Присоединяйтесь к нашему сообществу и будьте в курсе всех обновлений
       </p>
-      <a href="https://t.me/atlantis_studio_chat" class="join-btn inline-block">
-        <i class="fab fa-telegram-plane mr-2"></i> Telegram сообщество
+      <a href="https://t.me/atlantis_studio_chat" class="inline-block px-8 py-4 bg-gradient-to-r from-blue-500 to-purple-600 text-white font-bold rounded-full text-lg transition-all duration-300 transform hover:scale-105 hover:shadow-xl">
+        <i class="fab fa-telegram-plane mr-2"></i> Присоединиться в Telegram
       </a>
     </div>
   </section>
